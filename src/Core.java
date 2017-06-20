@@ -10,26 +10,36 @@ public class Core {
     private final String USER_AGENT = "Mozilla/5.0";
 
     public static void main(String[] args) throws Exception {
+        for (int i = 0;i < 1000;i ++) {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Core http;
+                    int cnt = 0;
+
+                    while (true) {
+                        try {
+                            Thread.sleep(1);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            http = new Core();
+                            http.sendGet();
+                            //System.out.println("Request sent: " + cnt);
+                            cnt ++;
+                        } catch (Exception e) {
+                            continue;
+                        }
 
 
-        Core http;
-
-        int cnt = 0;
-        while (true) {
-            Thread.sleep(10);
-
-            try {
-                http = new Core();
-                http.sendGet();
-                System.out.println("Request sent: " + cnt);
-                cnt ++;
-            } catch (Exception e) {
-                continue;
-            }
-
+                    }
+                }
+            }).run();
 
         }
-
     }
 
     // HTTP GET request
