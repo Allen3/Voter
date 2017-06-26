@@ -17,9 +17,6 @@ public class Core {
 
         while (true) {
 
-            Thread.sleep(10);
-
-
             try {
                 http = new Core();
                 http.sendGet();
@@ -27,11 +24,13 @@ public class Core {
                 cnt++;
             } catch (Exception e) {
                 continue;
+            } finally {
+                Thread.sleep(120000);
             }
         }
     }
 
-        // HTTP GET request
+    // HTTP GET request
 
     private void sendGet() throws Exception {
 
@@ -42,6 +41,7 @@ public class Core {
 
         con.setConnectTimeout(1000);
         con.setReadTimeout(1000);
+
         // optional default is GET
         con.setRequestMethod("GET");
 
