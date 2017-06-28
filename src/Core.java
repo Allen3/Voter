@@ -25,7 +25,7 @@ public class Core {
             } catch (Exception e) {
                 continue;
             } finally {
-                Thread.sleep(120000);
+                Thread.sleep(1000);
             }
         }
     }
